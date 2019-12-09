@@ -36,8 +36,8 @@ class TestModelTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($model->saveData());	//а теперь истина
 	}
 	
-	//проверяем условие 10<i<20
-	function testIntMustBeGreaterThanTenAdnSmallerThanTwenty() {
+	//проверяем условие 10<i<1000
+	function testIntMustBeGreater() {
 		$model=new TestModel;
 		/* Условия ложны */
 		$model->setAttributes(2,'test1');	
@@ -46,14 +46,14 @@ class TestModelTest extends PHPUnit_Framework_TestCase {
 		$model->setAttributes(10,'test2');	
 		$this->assertFalse($model->saveData());	
 		
-		$model->setAttributes(20,'test3');	
+		$model->setAttributes(1000,'test3');	
 		$this->assertFalse($model->saveData());	
 		
-		$model->setAttributes(25,'test4');	
+		$model->setAttributes(1025,'test4');	
 		$this->assertFalse($model->saveData());	
 		
 		/* Условие истинно */
-		$model->setAttributes(15,'test5');	
+		$model->setAttributes(600,'test5');	
 		$this->assertTrue($model->saveData());	
 	}
 	
